@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Munda Kfé — Restaurant face à l'océan, Capbreton</title>
+<meta name="description" content="Munda Kfé, restaurant les pieds dans le sable à Capbreton. Cuisine franco-italienne, menu du jour, pizzas, cocktails, terrasse vue océan.">
+<link rel="icon" href="images/flamingo-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Monoton&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1c2555;
+    --navy-deep:#11163a;
+    --navy-light:#28316b;
+    --pink:#f871a8;
+    --pink-dark:#e04080;
+    --pink-neon:#ff2e9a;
+    --cream:#fef3de;
+    --white:#ffffff;
+    --ink:#241d3a;
+    --font-display:'Fredoka', sans-serif;
+    --font-neon:'Monoton', cursive;
+    --font-body:'Poppins', sans-serif;
+    --radius:20px;
+    --shadow:0 20px 45px rgba(28,37,85,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block; max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--font-display); margin:0;}
+  p{margin:0;}
+  .container{width:100%; max-width:1180px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:600; font-size:0.75rem; letter-spacing:0.14em;
+    text-transform:uppercase; color:var(--pink-dark);
+  }
+  .eyebrow::before{content:""; width:22px; height:2px; background:var(--pink-dark); display:inline-block;}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:14px 28px; border-radius:999px; font-family:var(--font-display);
+    font-weight:600; font-size:0.95rem; text-decoration:none; border:2px solid transparent;
+    cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-solid{background:var(--pink-neon); color:var(--white); box-shadow:0 10px 25px rgba(255,46,154,0.35);}
+  .btn-solid:hover{box-shadow:0 14px 30px rgba(255,46,154,0.5);}
+  .btn-outline{border-color:rgba(255,255,255,0.55); color:var(--white);}
+  .btn-outline:hover{background:rgba(255,255,255,0.12);}
+
+  /* ---------- NAV ---------- */
+  header{position:fixed; top:0; left:0; right:0; z-index:100; padding:16px 0; transition:background .3s ease, padding .3s ease, box-shadow .3s ease;}
+  header.scrolled{background:rgba(17,22,58,0.94); backdrop-filter:blur(8px); padding:10px 0; box-shadow:0 8px 24px rgba(0,0,0,0.18);}
+  nav{display:flex; align-items:center; justify-content:space-between;}
+  .logo{font-family:var(--font-display); font-weight:700; font-size:1.3rem; color:var(--white); text-decoration:none; display:flex; align-items:center; gap:10px;}
+  .logo img{width:38px; height:auto;}
+  .logo span{color:var(--pink);}
+  .nav-links{display:flex; align-items:center; gap:30px; list-style:none; margin:0; padding:0;}
+  .nav-links a{text-decoration:none; color:var(--white); font-weight:500; font-size:0.94rem; opacity:0.9; transition:opacity .2s ease;}
+  .nav-links a:hover{opacity:1;}
+  .nav-toggle{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .nav-toggle span{width:26px; height:2px; background:var(--white); border-radius:2px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative; min-height:100svh; display:flex; align-items:center;
+    background:
+      radial-gradient(circle at 80% 25%, rgba(248,113,168,0.28), transparent 55%),
+      radial-gradient(circle at 10% 85%, rgba(255,46,154,0.18), transparent 50%),
+      linear-gradient(180deg, var(--navy-deep) 0%, var(--navy) 60%, var(--navy-light) 100%);
+    overflow:hidden; padding-top:90px;
+  }
+  .hero-stripe-edge{position:absolute; top:0; left:0; right:0; height:14px;
+    background:repeating-linear-gradient(90deg, var(--pink) 0 22px, var(--cream) 22px 44px);}
+  .hero-flamingo{position:absolute; right:-40px; top:52%; transform:translateY(-50%); width:480px; filter:drop-shadow(0 25px 40px rgba(0,0,0,0.35));}
+  .hero-content{position:relative; z-index:2; max-width:640px; padding:50px 0 110px;}
+  .hero h1{
+    font-family:var(--font-neon); font-weight:400; font-size:clamp(2.4rem, 6vw, 4.4rem);
+    color:var(--pink); line-height:1.15;
+    text-shadow:0 0 6px rgba(248,113,168,0.9), 0 0 18px rgba(255,46,154,0.7), 0 0 42px rgba(255,46,154,0.55), 0 0 70px rgba(255,46,154,0.3);
+    margin-bottom:18px;
+  }
+  .hero-tagline{font-family:var(--font-display); color:var(--white); font-size:clamp(1.05rem, 2vw, 1.35rem); font-weight:500; margin-bottom:14px;}
+  .hero p.desc{color:rgba(255,255,255,0.8); font-size:1rem; line-height:1.7; max-width:480px; margin-bottom:30px;}
+  .hero-actions{display:flex; flex-wrap:wrap; gap:16px;}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{background:var(--pink); overflow:hidden; white-space:nowrap; border-top:3px solid var(--navy); border-bottom:3px solid var(--navy);}
+  .marquee-track{display:inline-flex; align-items:center; animation:marquee 28s linear infinite;}
+  .marquee-track span{
+    font-family:var(--font-display); font-weight:600; font-size:1rem; letter-spacing:0.02em;
+    color:var(--navy); padding:14px 22px; text-transform:uppercase; white-space:nowrap;
+  }
+  @keyframes marquee{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  section{padding:96px 0;}
+  .section-head{text-align:center; max-width:620px; margin:0 auto 52px;}
+  .section-head h2{font-size:clamp(1.9rem, 4vw, 2.6rem); color:var(--navy); margin-bottom:14px;}
+  .section-head p{color:#5a5570; font-size:1.02rem; line-height:1.6;}
+
+  /* ---------- LE LIEU ---------- */
+  .feature-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-bottom:60px;}
+  .feature-card{background:var(--white); border-radius:var(--radius); padding:30px; box-shadow:var(--shadow);}
+  .feature-card .tag{font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--pink-dark); margin-bottom:10px; display:block;}
+  .feature-card h3{font-size:1.15rem; color:var(--navy); margin-bottom:10px;}
+  .feature-card p{font-size:0.92rem; color:#5a5570; line-height:1.6;}
+
+  .gallery{display:grid; grid-template-columns:repeat(4, 1fr); grid-auto-rows:190px; gap:16px;}
+  .gallery figure{margin:0; position:relative; border-radius:16px; overflow:hidden; box-shadow:var(--shadow);}
+  .gallery img{width:100%; height:100%; object-fit:cover; transition:transform .4s ease;}
+  .gallery figure:hover img{transform:scale(1.06);}
+  .gallery figcaption{
+    position:absolute; left:0; right:0; bottom:0; padding:10px 14px;
+    background:linear-gradient(0deg, rgba(17,22,58,0.85), transparent);
+    color:var(--white); font-size:0.78rem; font-weight:500;
+  }
+  .gallery figure.wide{grid-column:span 2;}
+  .gallery figure.tall{grid-row:span 2;}
+
+  /* ---------- MENU DU JOUR ---------- */
+  .menu-jour{background:var(--white); position:relative;}
+  .jour-card{max-width:660px; margin:0 auto; background:var(--cream); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; border:3px solid var(--white);}
+  .jour-ribbon{background:var(--navy); color:var(--white); padding:20px 32px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  .jour-ribbon h3{font-size:1.25rem; color:var(--pink);}
+  .jour-date{font-size:0.78rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; background:rgba(248,113,168,0.22); color:var(--pink); padding:6px 14px; border-radius:999px;}
+  .jour-body{padding:30px 32px 30px;}
+  .jour-item{display:flex; justify-content:space-between; align-items:baseline; gap:12px; padding:14px 0; border-bottom:1px dashed rgba(224,64,128,0.25);}
+  .jour-item:last-of-type{border-bottom:none;}
+  .jour-item .name{font-weight:600; color:var(--navy);}
+  .jour-item .desc{display:block; font-weight:400; font-size:0.87rem; color:#7a748d; margin-top:2px;}
+  .jour-item .price{font-family:var(--font-display); font-weight:600; color:var(--pink-dark); white-space:nowrap;}
+  .jour-formules{margin-top:20px; padding-top:18px; border-top:2px solid rgba(28,37,85,0.08); display:flex; flex-direction:column; gap:8px;}
+  .jour-formules .f-row{display:flex; justify-content:space-between; font-size:0.9rem; color:var(--navy);}
+  .jour-formules .f-row b{font-weight:600;}
+  .jour-note{margin-top:18px; font-size:0.82rem; color:#8b8499; font-style:italic; text-align:center;}
+  .jour-loading{text-align:center; color:#8b8499; font-size:0.9rem; padding:20px 0;}
+
+  /* ---------- CARTE ---------- */
+  .carte-toggle{display:flex; justify-content:center; gap:14px; margin-bottom:28px; flex-wrap:wrap;}
+  .toggle-btn{
+    font-family:var(--font-display); font-weight:600; font-size:0.98rem; padding:12px 26px;
+    border-radius:999px; border:2px solid var(--navy); background:transparent; color:var(--navy);
+    cursor:pointer; transition:all .2s ease;
+  }
+  .toggle-btn.active{background:var(--navy); color:var(--white);}
+  .cat-pills{display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:40px;}
+  .pill{
+    font-size:0.85rem; font-weight:500; padding:9px 18px; border-radius:999px;
+    border:1.5px solid rgba(28,37,85,0.18); background:var(--white); color:var(--navy);
+    cursor:pointer; transition:all .2s ease;
+  }
+  .pill.active{background:var(--pink); border-color:var(--pink); color:var(--white);}
+  .carte-panel{max-width:780px; margin:0 auto; background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); padding:36px 40px;}
+  .carte-list{display:flex; flex-direction:column;}
+  .carte-item{display:flex; justify-content:space-between; align-items:baseline; gap:14px; padding:13px 0; border-bottom:1px solid rgba(28,37,85,0.08);}
+  .carte-item:last-child{border-bottom:none;}
+  .carte-item .name{font-weight:600; color:var(--navy); font-size:0.98rem;}
+  .carte-item .desc{display:block; font-weight:400; font-size:0.85rem; color:#7a748d; margin-top:3px; line-height:1.5;}
+  .carte-item .price{font-family:var(--font-display); font-weight:600; color:var(--pink-dark); white-space:nowrap; font-size:0.95rem;}
+  .carte-subhead{font-family:var(--font-display); font-weight:600; color:var(--navy); font-size:0.85rem; text-transform:uppercase; letter-spacing:0.05em; margin:22px 0 4px; padding-top:14px; border-top:2px solid rgba(28,37,85,0.06);}
+  .carte-subhead:first-child{margin-top:0; padding-top:0; border-top:none;}
+  .carte-note{font-size:0.8rem; color:#8b8499; font-style:italic; padding:10px 0;}
+  .carte-legal{text-align:center; font-size:0.78rem; color:#8b8499; margin-top:26px; line-height:1.6;}
+
+  /* ---------- AVIS ---------- */
+  .avis{background:var(--navy); color:var(--white); position:relative; overflow:hidden;}
+  .avis .section-head h2{color:var(--white);}
+  .avis .section-head p{color:rgba(255,255,255,0.65);}
+  .avis-grid{display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px;}
+  .avis-card{background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius); padding:28px;}
+  .stars{color:var(--pink); letter-spacing:2px; margin-bottom:16px; font-size:1.05rem;}
+  .avis-card p.quote{font-size:0.96rem; line-height:1.65; color:rgba(255,255,255,0.85); margin-bottom:18px;}
+  .avis-author{font-family:var(--font-display); font-weight:600; color:var(--pink); font-size:0.9rem;}
+  .avis-disclaimer{text-align:center; font-size:0.8rem; color:rgba(255,255,255,0.45); margin-top:36px;}
+
+  /* ---------- INFOS ---------- */
+  .infos-wrap{display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:stretch;}
+  .infos-list{background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); padding:34px; display:flex; flex-direction:column; gap:22px;}
+  .infos-row{display:flex; gap:16px; align-items:flex-start;}
+  .infos-row .ic{width:22px; height:22px; flex-shrink:0; margin-top:2px; color:var(--pink-dark);}
+  .infos-row h4{font-family:var(--font-display); font-size:1rem; color:var(--navy); margin:0 0 4px;}
+  .infos-row p{color:#5a5570; font-size:0.92rem; line-height:1.55;}
+  .infos-row .confirm{color:var(--pink-dark); font-size:0.78rem; font-style:italic;}
+  .map-card{border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); position:relative; min-height:320px;}
+  .map-card iframe{width:100%; height:100%; min-height:320px; border:0;}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:4px;}
+  .chip{font-size:0.76rem; background:var(--cream); color:var(--navy); padding:5px 12px; border-radius:999px; font-weight:500;}
+
+  footer{background:var(--navy-deep); color:rgba(255,255,255,0.7); padding:52px 0 26px;}
+  .footer-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:24px; align-items:flex-start; margin-bottom:32px;}
+  .footer-logo{font-family:var(--font-display); font-weight:700; font-size:1.25rem; color:var(--white); display:flex; align-items:center; gap:10px;}
+  .footer-logo img{width:34px;}
+  .footer-logo span{color:var(--pink);}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; font-size:0.78rem;}
+  .footer-bottom a{color:rgba(255,255,255,0.55); text-decoration:underline; text-underline-offset:3px;}
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    .marquee-track{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  @media (max-width: 900px){
+    .feature-grid{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:repeat(2, 1fr); grid-auto-rows:160px;}
+    .gallery figure.wide{grid-column:span 2;}
+    .infos-wrap{grid-template-columns:1fr;}
+    .carte-panel{padding:28px 22px;}
+  }
+  @media (max-width: 860px){
+    .nav-links{
+      position:fixed; top:0; right:0; height:100svh; width:min(78vw, 320px); background:var(--navy);
+      flex-direction:column; align-items:flex-start; justify-content:center; gap:26px; padding:40px;
+      transform:translateX(100%); transition:transform .3s ease;
+    }
+    .nav-links.open{transform:translateX(0);}
+    .nav-toggle{display:flex;}
+    .hero-flamingo{opacity:0.4; width:300px; right:-90px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="container">
+    <nav>
+      <a href="#accueil" class="logo"><img src="images/flamingo-icon.png" alt=""> Munda <span>Kfé</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#lieu">Le lieu</a></li>
+        <li><a href="#menu-jour">Menu du jour</a></li>
+        <li><a href="#carte">La carte</a></li>
+        <li><a href="#avis">Avis</a></li>
+        <li><a href="#infos">Infos & accès</a></li>
+        <li><a href="tel:0558721020" class="btn btn-solid" style="padding:10px 20px;">05 58 72 10 20</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="accueil">
+  <div class="hero-stripe-edge"></div>
+  <img class="hero-flamingo" src="images/flamingo-logo.png" alt="Le flamant rose de Munda Kfé">
+  <div class="container">
+    <div class="hero-content">
+      <p class="eyebrow reveal in" style="color:var(--pink);">Café · Snack · Bord de plage — Capbreton</p>
+      <h1>Munda Kfé</h1>
+      <p class="hero-tagline">Les pieds dans le sable, la tête dans les néons.</p>
+      <p class="desc">Un repaire haut en couleur face à l'océan : cuisine franco-italienne généreuse, cocktails maison et un décor qui ne ressemble à aucun autre. Ouvert toute l'année à Capbreton.</p>
+      <div class="hero-actions">
+        <a href="#menu-jour" class="btn btn-solid">Voir le menu du jour</a>
+        <a href="tel:0558721020" class="btn btn-outline">05 58 72 10 20</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>good food ★ good mood ★ good vibes ★ vue sur l'océan ★ pizza maison ★ cocktails maison ★ capbreton ★ good food ★ good mood ★ good vibes ★ vue sur l'océan ★ pizza maison ★ cocktails maison ★ capbreton ★</span>
+    <span aria-hidden="true">good food ★ good mood ★ good vibes ★ vue sur l'océan ★ pizza maison ★ cocktails maison ★ capbreton ★ good food ★ good mood ★ good vibes ★ vue sur l'océan ★ pizza maison ★ cocktails maison ★ capbreton ★</span>
+  </div>
+</div>
+
+<!-- ============ LE LIEU ============ -->
+<section id="lieu">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow" style="justify-content:center;">Le lieu</p>
+      <h2>Un décor qui ne ressemble à aucun autre</h2>
+      <p>Terrasse posée sur le sable, néons roses, flamants et couleurs partout à l'intérieur — le cadre fait la moitié du repas.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card reveal">
+        <span class="tag">Vue imprenable</span>
+        <h3>Face à l'Atlantique</h3>
+        <p>Terrasse sur la plage de Capbreton. Déjeuner au soleil, dîner au coucher du soleil.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="tag">Concept unique</span>
+        <h3>Haut en couleur</h3>
+        <p>Néons roses, flamants, fresques et sol peint à la main : une ambiance qui ne se prend pas au sérieux, une cuisine qui si.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="tag">Franco-italien</span>
+        <h3>Deux cuisines, un cap</h3>
+        <p>Pâtes fraîches, pizzas maison, poissons et classiques de brasserie. Simple, frais, généreux.</p>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <figure class="wide tall reveal">
+        <img src="images/lieu-terrasse-coucher-de-soleil.jpg" alt="Terrasse du Munda Kfé au coucher du soleil, vue sur l'océan" loading="lazy">
+        <figcaption>Terrasse face à l'océan</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="images/lieu-neon-ciao-bella.jpg" alt="Néon rose Ciao Bella et flamants suspendus au bar" loading="lazy">
+        <figcaption>Néons & flamants</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="images/lieu-bar-graffiti.jpg" alt="Comptoir du bar avec fresque graffiti Munda Kfé" loading="lazy">
+        <figcaption>Le comptoir</figcaption>
+      </figure>
+      <figure class="wide reveal">
+        <img src="images/lieu-salle-hopscotch.jpg" alt="Salle intérieure colorée avec sol peint façon marelle" loading="lazy">
+        <figcaption>La salle, sol peint à la main</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="images/lieu-salle-tables.jpg" alt="Tables dressées dans la salle du restaurant" loading="lazy">
+        <figcaption>Salle à manger</figcaption>
+      </figure>
+      <figure class="reveal">
+        <img src="images/lieu-salle-ballons.jpg" alt="Salle décorée avec ballons et vue sur la rue" loading="lazy">
+        <figcaption>Ambiance festive</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU DU JOUR ============ -->
+<!-- Cette section charge data/menu-du-jour.json — c'est ce fichier que l'équipe modifie depuis /patrons -->
+<section class="menu-jour" id="menu-jour">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow" style="justify-content:center;">Formules du Munda Kfé</p>
+      <h2>Le menu du jour</h2>
+      <p>Consultez notre ardoise — préparée chaque matin. Valable les midis du lundi au vendredi, hors jours fériés.</p>
+    </div>
+
+    <div class="jour-card reveal">
+      <div class="jour-ribbon">
+        <h3>Aujourd'hui à l'ardoise</h3>
+        <span class="jour-date" id="jourDate">…</span>
+      </div>
+      <div class="jour-body" id="jourBody">
+        <p class="jour-loading">Chargement du menu du jour…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LA CARTE ============ -->
+<section id="carte">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow" style="justify-content:center;">La carte</p>
+      <h2>Toute la carte Munda Kfé</h2>
+      <p>Des entrées aux cocktails, la carte complète du restaurant.</p>
+    </div>
+
+    <div class="carte-toggle">
+      <button class="toggle-btn active" data-group="manger">🍽️ À table</button>
+      <button class="toggle-btn" data-group="boire">🍹 À boire</button>
+    </div>
+    <div class="cat-pills" id="catPills"></div>
+    <div class="carte-panel reveal">
+      <div class="carte-list" id="carteList"></div>
+    </div>
+    <p class="carte-legal">Prix nets en euros, service compris. Millésimes susceptibles de changement selon les stocks et approvisionnements.<br>L'abus d'alcool est dangereux pour la santé — à consommer avec modération. Nous n'acceptons pas les chèques.</p>
+  </div>
+</section>
+
+<!-- ============ AVIS ============ -->
+<section class="avis" id="avis">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow" style="justify-content:center;">Ils en parlent</p>
+      <h2>Ce que disent nos clients</h2>
+      <p>Exemples d'avis pour la démo — à remplacer par vos vrais avis Google / Tripadvisor.</p>
+    </div>
+    <div class="avis-grid">
+      <div class="avis-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Régal absolu avec les tagliatelles aux coques, généreuses et iodées comme on aime. Super accueil, terrasse vue mer parfaite.</p>
+        <div class="avis-author">— Exemple d'avis client</div>
+      </div>
+      <div class="avis-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Ambiance délirante avec les néons et les flamants partout, mention spéciale pour le poke bowl et les cocktails maison.</p>
+        <div class="avis-author">— Exemple d'avis client</div>
+      </div>
+      <div class="avis-card reveal">
+        <div class="stars">★★★★☆</div>
+        <p class="quote">Très bonnes pizzas maison, service rapide même complet. Belle vue sur la plage depuis la terrasse en fin de journée.</p>
+        <div class="avis-author">— Exemple d'avis client</div>
+      </div>
+    </div>
+    <p class="avis-disclaimer">Avis fictifs de démonstration — remplacez-les par vos vrais avis avant la mise en ligne définitive.</p>
+  </div>
+</section>
+
+<!-- ============ INFOS ============ -->
+<section id="infos">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow" style="justify-content:center;">Nous trouver</p>
+      <h2>Infos pratiques</h2>
+      <p>Venez comme vous êtes, en maillot après la plage ou pour un dîner face au coucher du soleil.</p>
+    </div>
+    <div class="infos-wrap">
+      <div class="infos-list reveal">
+        <div class="infos-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="9" r="2.4"/></svg>
+          <div><h4>Adresse</h4><p>38 Boulevard François Mitterrand<br>40130 Capbreton</p></div>
+        </div>
+        <div class="infos-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><h4>Horaires</h4><p>Tous les jours, service continu<br><span class="confirm">Amplitude horaire à confirmer avec l'équipe</span></p></div>
+        </div>
+        <div class="infos-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5c0 8 7 15 15 15l3-4-6-2-2 2c-2-1-4-3-5-5l2-2-2-6-4 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><h4>Téléphone</h4><p><a href="tel:0558721020">05 58 72 10 20</a></p></div>
+        </div>
+        <div class="infos-row">
+          <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8h18M8 3v3M16 3v3" stroke-linecap="round"/></svg>
+          <div>
+            <h4>Sur place</h4>
+            <div class="chips">
+              <span class="chip">Terrasse vue mer</span>
+              <span class="chip">À emporter</span>
+              <span class="chip">Cartes bancaires</span>
+              <span class="chip">Pas de chèques</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="map-card reveal">
+        <iframe src="https://maps.google.com/maps?q=38%20Boulevard%20Fran%C3%A7ois%20Mitterrand%2040130%20Capbreton&z=16&output=embed" loading="lazy" title="Localisation Munda Kfé, Capbreton"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo"><img src="images/flamingo-icon.png" alt=""> Munda <span>Kfé</span></div>
+        <p style="margin-top:8px; font-size:0.85rem;">38 Boulevard François Mitterrand, 40130 Capbreton</p>
+      </div>
+      <a href="tel:0558721020" class="btn btn-outline">05 58 72 10 20</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Munda Kfé — Site test, contenu à valider avant publication</span>
+      <a href="/patrons/">Espace équipe</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---------- Menu mobile ----------
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(l => l.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // ---------- Header au scroll ----------
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+
+  // ---------- Reveal au scroll ----------
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---------- Date du jour ----------
+  const jourDate = document.getElementById('jourDate');
+  const today = new Date();
+  const formatted = today.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+  jourDate.textContent = formatted.charAt(0).toUpperCase() + formatted.slice(1);
+
+  // ---------- Menu du jour : chargé depuis data/menu-du-jour.json ----------
+  fetch('data/menu-du-jour.json', { cache: 'no-store' })
+    .then(r => { if (!r.ok) throw new Error('fetch failed'); return r.json(); })
+    .then(d => {
+      const fmt = (n) => Number(n).toFixed(2).replace('.', ',') + ' €';
+      const row = (name, desc) => `
+        <div class="jour-item">
+          <div>
+            <span class="name">${name || ''}</span>
+            ${desc ? `<span class="desc">${desc}</span>` : ''}
+          </div>
+        </div>`;
+      document.getElementById('jourBody').innerHTML = `
+        ${row(d.entree_nom, d.entree_description)}
+        ${row(d.plat_nom, d.plat_description)}
+        ${row(d.dessert_nom, d.dessert_description)}
+        <div class="jour-formules">
+          <div class="f-row"><span>Plat du jour seul</span><b>${fmt(d.prix_plat_seul)}</b></div>
+          <div class="f-row"><span>Entrée & plat OU plat & dessert</span><b>${fmt(d.prix_formule_2)}</b></div>
+          <div class="f-row"><span>Entrée, plat, dessert</span><b>${fmt(d.prix_formule_3)}</b></div>
+        </div>
+        ${d.note ? `<p class="jour-note">${d.note}</p>` : ''}
+      `;
+    })
+    .catch(() => {
+      document.getElementById('jourBody').innerHTML =
+        '<p class="jour-loading">Menu du jour indisponible pour le moment — pensez à consulter notre ardoise sur place.<br><span style="font-size:0.78rem;">(Astuce test : ce message apparaît si le site est ouvert en fichier local. Servez-le via un serveur local ou testez-le une fois déployé.)</span></p>';
+    });
+
+  // ---------- La carte : données + filtres ----------
+  const carte = {
+    manger: {
+      "Entrées": [
+        {name:"Pâté au piquillos de la maison Accoceberry", desc:"90g", price:"9,50 €"},
+        {name:"Rillettes de crabe à la créole", desc:"90g", price:"11,00 €"},
+        {name:"Friture d'éperlans", desc:"mayonnaise fraîcheur", price:"12,50 €"},
+        {name:"Cassolette de coques en persillade", price:"13,50 €"},
+        {name:"Assiette de Serrano", desc:"guindillas", price:"16,50 €"},
+        {name:"Tataki de thon au sésame", desc:"sauce ponzu", price:"16,00 €"},
+      ],
+      "Coquillages": [
+        {name:"Crevettes roses mayonnaise", price:"14,50 €"},
+        {name:"6 huîtres", desc:"selon arrivage", price:"15,00 €"},
+        {name:"12 huîtres", desc:"selon arrivage", price:"28,00 €"},
+      ],
+      "Salades & Bowls": [
+        {name:"Salade de tomates cerises et burrata", desc:"pesto de roquette, Serrano", price:"16,50 €"},
+        {name:"Grande salade César", desc:"poulet, romaine, croûtons, parmesan, tomates confites, sauce César", price:"17,50 €"},
+        {type:"subheading", label:"Munda Poke — riz, radis, mangue, wakamé, edamamé, avocat, carottes, vinaigrette asiatique"},
+        {name:"Version végétarienne", price:"14,50 €"},
+        {name:"Au thon mariné au soja", price:"17,50 €"},
+        {name:"Au poulet", price:"16,50 €"},
+      ],
+      "Pâtes": [
+        {name:"Tagliatelles à la crème carbonara", price:"16,50 €"},
+        {name:"Tagliatelles aux coques", desc:"crème de coquillages", price:"19,50 €"},
+        {name:"Tagliatelles aux noix de Saint-Jacques", desc:"crème de chorizo ibérico", price:"25,00 €"},
+      ],
+      "Moules": [
+        {type:"subheading", label:"Servies avec frites maison"},
+        {name:"Marinière", price:"16,50 €"},
+        {name:"À la crème", price:"17,50 €"},
+        {name:"Sauce au Roquefort", price:"18,00 €"},
+      ],
+      "Poissons": [
+        {name:"Chipirons au chorizo ibérico et piquillos", desc:"frites maison", price:"19,00 €"},
+        {name:"Pavé de lieu noir façon bouillabaisse", desc:"pomme de terre, coquillages — fromage râpé, croûtons, sauce rouille", price:"22,50 €"},
+        {name:"Thon mi-cuit au sésame", desc:"légumes croquants, riz basmati", price:"23,50 €"},
+      ],
+      "Viandes": [
+        {name:"Burger Bacon Cheese", desc:"frites maison", price:"17,50 €"},
+        {name:"Tartare de bœuf charolais coupé au couteau", desc:"frites maison", price:"19,00 €"},
+        {name:"Faux filet, sauce au poivre", desc:"frites maison", price:"20,50 €"},
+      ],
+      "Pizzas": [
+        {type:"subheading", label:"Pâte maison, étalée à la main, produits frais"},
+        {name:"Bambino (petite)", desc:"sauce tomate, mozzarella fiore di latte", price:"10,50 €"},
+        {name:"Piccolino (petite)", desc:"+ jambon blanc", price:"11,00 €"},
+        {name:"Margherita", desc:"huile de basilic, olives", price:"12,00 €"},
+        {name:"Prosciutto cotto", desc:"jambon blanc, olives", price:"14,00 €"},
+        {name:"Régina", desc:"jambon blanc, champignons, œuf, olives", price:"14,50 €"},
+        {name:"Mamma", desc:"crème fraîche, jambon blanc, champignons, pesto", price:"15,00 €"},
+        {name:"Cabra", desc:"crème fraîche, jambon blanc, chèvre, miel", price:"15,00 €"},
+        {name:"Camembert", desc:"serrano, persillade, réduction balsamique, roquette", price:"15,50 €"},
+        {name:"Carbonara", desc:"crème fraîche, lard, oignons, parmesan, œuf", price:"16,00 €"},
+        {name:"Bufalina", desc:"tomates confites, mozzarella di bufala, pesto, roquette", price:"16,50 €"},
+        {name:"Formaggio", desc:"crème fraîche, chèvre, mozzarella di bufala, gorgonzola", price:"17,00 €"},
+        {name:"Scamorza", desc:"chorizo, scamorza fumée, mozzarella di bufala, tomates confites, roquette", price:"17,50 €"},
+        {name:"Italiana", desc:"burrata, serrano, tomates confites, parmesan, huile de truffe, roquette", price:"19,00 €"},
+        {type:"note", label:"Tout supplément : 1,50 €"},
+      ],
+      "Desserts & Glaces": [
+        {name:"Crème brûlée à la fève de Tonka", price:"8,00 €"},
+        {name:"Île flottante aux amandes grillées", price:"8,00 €"},
+        {name:"Macaron cœur coulant au chocolat", price:"9,00 €"},
+        {name:"Pavlova aux fruits exotiques", price:"9,00 €"},
+        {name:"Profiteroles", price:"10,00 €"},
+        {name:"Irish coffee", price:"10,50 €"},
+        {type:"subheading", label:"Glaces"},
+        {name:"1 boule", price:"3,50 €"},
+        {name:"2 boules", price:"5,50 €"},
+        {name:"3 boules", price:"7,50 €"},
+        {name:"Supplément chantilly", price:"2,00 €"},
+        {type:"note", label:"Parfums : vanille, fraise, chocolat, café, noix de coco — Sorbets : citron vert, cerise"},
+        {type:"subheading", label:"Coupes de glace"},
+        {name:"Dame blanche", desc:"glace vanille, sauce chocolat, chantilly", price:"9,00 €"},
+        {name:"Chocolat liégeois", price:"9,00 €"},
+        {name:"Café liégeois", price:"9,00 €"},
+        {name:"Noix de coco liégeois", price:"9,00 €"},
+        {name:"Cerise Melba", desc:"sorbet cerise, glace vanille, cerises amarena, chantilly", price:"10,00 €"},
+        {name:"Colonel", desc:"sorbet citron vert, vodka", price:"11,00 €"},
+      ],
+      "Formules du midi": [
+        {type:"note", label:"Consultez notre ardoise — valables les midis du lundi au vendredi (quantité limitée), hors jours fériés"},
+        {name:"Plat du jour", price:"18,00 €"},
+        {name:"Entrée & plat OU plat & dessert", price:"20,50 €"},
+        {name:"Entrée, plat, dessert", price:"23,00 €"},
+      ],
+      "Menu enfant": [
+        {name:"Menu enfant", desc:"Bambino ou Piccolino (petite pizza), ou steak haché-frites, ou moules-frites — puis gâteau croustillant au chocolat ou glace Smarties — + 1 sirop à l'eau au choix", price:"12,50 €"},
+      ],
+    },
+    boire: {
+      "Vins blancs": [
+        {type:"note", label:"Formats : verre (12cl) / demi (37,5cl) / bouteille (75cl) selon les références"},
+        {name:"Domaine de Pellehaut, Côtes de Gascogne 2024", price:"Verre 5,50 € · Bout. 19 €"},
+        {name:"Domaine de la Rose, Côtes de Gascogne moelleux 2024", price:"Verre 5,50 € · Bout. 20,50 €"},
+        {name:"Château de Lisennes, Entre-deux-Mers 2024", price:"Verre 6 € · Demi 11,50 € · Bout. 21 €"},
+        {name:"Château Pouyanne, Graves 2024", price:"Demi 12,50 € · Bout. 23 €"},
+        {name:"Domaine de Mastric, Côtes de Gascogne", price:"Bout. 23,50 €"},
+        {name:"Coquillages et Crustacés, Jurançon sec 2022", price:"Bout. 29 €"},
+        {name:"La Sereine, Chablis 2020", price:"Demi 16,50 € · Bout. 32 €"},
+        {name:"Le Clos du Roy, Sancerre 2022", price:"Demi 28,50 € · Bout. 55 €"},
+      ],
+      "Vins rosés": [
+        {name:"Les Pins Sacrés, Pays d'Oc 2024", price:"Verre 5 € · Bout. 18,50 €"},
+        {name:"Domaine de Mastric, Côtes de Gascogne 2023", price:"Verre 6 € · Bout. 23 €"},
+        {name:"Cœur du Rouët, Côtes de Provence 2024", price:"Demi 14 € · Bout. 27 €"},
+      ],
+      "Vins rouges": [
+        {name:"Domaine de Pellehaut, Côtes de Gascogne 2024", price:"Verre 5,50 € · Bout. 19 €"},
+        {name:"Malbec, Bodega Norton, Argentine 2017", price:"Verre 5,50 € · Bout. 20 €"},
+        {name:"Ivanto, Rioja Crianza, Espagne 2020", price:"Verre 6 € · Bout. 23 €"},
+        {name:"Tursan, Les Vignerons de Tursan 2020", price:"Bout. 26 €"},
+        {name:"Château Pouyanne, Graves 2020", price:"Demi 13,50 € · Bout. 27 €"},
+        {name:"Domaine Bruneau, St-Nicolas-de-Bourgueil bio VV 2024", price:"Demi 14 € · Bout. 28 €"},
+        {name:"Château Grand Bert, Montagne-St-Émilion 2021", price:"50cl 21 € · Bout. 29 €"},
+      ],
+      "Champagnes": [
+        {name:"Charles Mignon, Grande Réserve 1er cru brut", price:"36 €"},
+        {name:"Charles Collin, Brut", price:"65 €"},
+        {name:"Louis Roederer", price:"110 €"},
+      ],
+      "Cocktails": [
+        {type:"subheading", label:"Avec alcool — 25cl — 10,50 €"},
+        {name:"Mojito", desc:"rhum, citron vert, menthe, cassonade, eau gazeuse"},
+        {name:"Caïpirinha", desc:"cachaça, citron vert, cassonade"},
+        {name:"Gin Hendrick's Tonic", desc:"gin, rondelle de citron, baie de genièvre, tonic"},
+        {name:"Apérol Spritz", desc:"Aperol, prosecco, eau gazeuse"},
+        {name:"Piña Colada", desc:"rhum, jus d'ananas, noix de coco"},
+        {name:"London / Moscow Mule", desc:"gin ou vodka, citron vert, cassonade, gingembre frais, ginger beer"},
+        {name:"Sex on the Beach", desc:"vodka, liqueur de pêche, jus d'ananas, jus de cranberry"},
+        {type:"subheading", label:"Sans alcool — 25cl — 7,50 €"},
+        {name:"Virgin Mojito", desc:"citron vert, menthe, cassonade, eau gazeuse"},
+        {name:"Virgin Piña Colada", desc:"jus d'ananas, noix de coco"},
+        {name:"Bora-Bora", desc:"jus de mangue, jus de passion, jus d'ananas, sirop de grenadine"},
+      ],
+      "Bières & apéritifs": [
+        {type:"subheading", label:"Bières pression — Pelforth blonde ou Affligem blanche"},
+        {name:"Demi 25cl", price:"4,00 €"},
+        {name:"Pinte 50cl", price:"8,00 €"},
+        {name:"Picon bière — 25cl / Pinte 50cl", price:"4,50 € / 9,00 €"},
+        {type:"subheading", label:"Bières bouteille 33cl"},
+        {name:"Corona, Leffe", price:"6,00 €"},
+        {name:"Sans alcool", price:"4,50 €"},
+        {type:"subheading", label:"Apéritifs"},
+        {name:"Coupe de champagne", price:"9,00 €"},
+        {name:"Kir", desc:"cassis, mûre, pêche, framboise", price:"5,50 €"},
+        {name:"Kir royal", price:"10,00 €"},
+        {name:"Sangria rouge", price:"5,00 €"},
+        {name:"Suze", price:"6,00 €"},
+        {name:"Martini rouge ou blanc", price:"6,00 €"},
+        {name:"Porto rouge", price:"5,00 €"},
+        {name:"Ricard", price:"4,00 €"},
+        {name:"Campari", price:"5,00 €"},
+        {name:"Americano", price:"8,00 €"},
+        {name:"Negroni", price:"8,00 €"},
+        {name:"Gin Gibson's Tonic", price:"9,00 €"},
+        {name:"Whisky JB", price:"8,00 €"},
+        {name:"Whisky Jack Daniel's", price:"9,00 €"},
+        {name:"Whisky Oban 14 ans", price:"14,00 €"},
+        {type:"subheading", label:"Digestifs — 9,00 €"},
+        {name:"Limoncello, Poire William, Manzana, Patxaran, Izarra vert, Get 27, Calvados, Armagnac, Baileys, Tequila"},
+        {name:"Diplomatico, Cognac, Fine de cognac", price:"12,00 €"},
+      ],
+      "Softs & chauds": [
+        {type:"subheading", label:"Softs — 4,00 €"},
+        {name:"Coca-Cola, Coca Zéro, Ogeu, Orangina, Schweppes Tonic, Schweppes agrumes, Perrier, Ginger Beer, Ice Tea pêche"},
+        {type:"subheading", label:"Jus de fruits 20cl — 4,00 €"},
+        {name:"Orange, ananas, abricot, pomme, tomate, ACE"},
+        {type:"subheading", label:"Sirops à l'eau 33cl — 2,50 €"},
+        {name:"Menthe, grenadine, fraise, pêche, citron, orgeat"},
+        {type:"subheading", label:"Eaux minérales"},
+        {name:"Vittel / San Pellegrino 50cl", price:"4,50 €"},
+        {name:"Vittel / San Pellegrino 1L", price:"6,50 €"},
+        {type:"subheading", label:"Boissons chaudes"},
+        {name:"Café, décaféiné, ristretto, allongé, noisette", price:"2,50 €"},
+        {name:"Grand crème, thé, infusion", price:"4,00 €"},
+        {name:"Chocolat chaud", price:"4,00 €"},
+        {name:"Cappuccino, café viennois, chocolat viennois, latte", price:"5,00 €"},
+      ],
+    },
+  };
+
+  let currentGroup = 'manger';
+  let currentCat = Object.keys(carte.manger)[0];
+
+  function renderPills(){
+    const wrap = document.getElementById('catPills');
+    wrap.innerHTML = '';
+    Object.keys(carte[currentGroup]).forEach(cat => {
+      const b = document.createElement('button');
+      b.className = 'pill' + (cat === currentCat ? ' active' : '');
+      b.textContent = cat;
+      b.addEventListener('click', () => { currentCat = cat; renderPills(); renderList(); });
+      wrap.appendChild(b);
+    });
+  }
+
+  function renderList(){
+    const list = document.getElementById('carteList');
+    const items = carte[currentGroup][currentCat] || [];
+    list.innerHTML = items.map(it => {
+      if (it.type === 'subheading') return `<div class="carte-subhead">${it.label}</div>`;
+      if (it.type === 'note') return `<div class="carte-note">${it.label}</div>`;
+      return `
+        <div class="carte-item">
+          <div>
+            <span class="name">${it.name}</span>
+            ${it.desc ? `<span class="desc">${it.desc}</span>` : ''}
+          </div>
+          ${it.price ? `<span class="price">${it.price}</span>` : ''}
+        </div>`;
+    }).join('');
+  }
+
+  document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentGroup = btn.dataset.group;
+      currentCat = Object.keys(carte[currentGroup])[0];
+      renderPills();
+      renderList();
+    });
+  });
+
+  renderPills();
+  renderList();
+</script>
+
+</body>
+</html>

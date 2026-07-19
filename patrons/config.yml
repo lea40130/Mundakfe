@@ -1,0 +1,28 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+publish_mode: simple
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "menu_du_jour"
+    label: "Menu du jour"
+    files:
+      - file: "data/menu-du-jour.json"
+        label: "Ardoise du jour"
+        name: "menu_du_jour"
+        fields:
+          - { label: "Entrée du jour — nom", name: "entree_nom", widget: "string" }
+          - { label: "Entrée du jour — description (optionnel)", name: "entree_description", widget: "string", required: false }
+          - { label: "Plat du jour — nom", name: "plat_nom", widget: "string" }
+          - { label: "Plat du jour — description (optionnel)", name: "plat_description", widget: "string", required: false }
+          - { label: "Dessert du jour — nom", name: "dessert_nom", widget: "string" }
+          - { label: "Dessert du jour — description (optionnel)", name: "dessert_description", widget: "string", required: false }
+          - { label: "Prix — plat seul (€)", name: "prix_plat_seul", widget: "number", value_type: "float", default: 18 }
+          - { label: "Prix — entrée+plat OU plat+dessert (€)", name: "prix_formule_2", widget: "number", value_type: "float", default: 20.5 }
+          - { label: "Prix — entrée+plat+dessert (€)", name: "prix_formule_3", widget: "number", value_type: "float", default: 23 }
+          - { label: "Note en bas de carte (optionnel)", name: "note", widget: "text", required: false }
