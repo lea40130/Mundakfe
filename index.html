@@ -8,7 +8,7 @@
 <link rel="icon" href="images/flamingo-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Baloo+2:wght@600;700&family=Boogaloo&family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Give+You+Glory&family=Pinyon+Script&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Baloo+2:wght@600;700&family=Berkshire+Swash&family=Boogaloo&family=Caveat:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Give+You+Glory&family=Permanent+Marker&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#1c2555;
@@ -24,7 +24,8 @@
     --font-display:'Fredoka', sans-serif;
     --font-chalk:'Caveat', cursive;
     --font-neon:'Give You Glory', cursive;
-    --font-script:'Pinyon Script', cursive;
+    --font-script-bold:'Berkshire Swash', cursive;
+    --font-marker:'Permanent Marker', cursive;
     --font-lieu:'Boogaloo', cursive;
     --font-editorial:'Abril Fatface', serif;
     --font-avis:'Baloo 2', cursive;
@@ -68,7 +69,7 @@
     display:flex; flex-direction:column; align-items:center; text-align:center;
   }
   .hero-logo-mark{width:min(460px, 78vw); height:auto; filter:drop-shadow(0 18px 28px rgba(28,37,85,0.28)); margin-bottom:4px; opacity:0; animation:heroPop .8s ease .1s forwards;}
-  .hero-tagline{font-family:var(--font-script); font-weight:400; color:var(--white); text-shadow:0 2px 0 var(--navy), 0 4px 14px rgba(28,37,85,0.35); font-size:clamp(2.8rem, 7.5vw, 4.6rem); line-height:1.1; max-width:640px; margin-bottom:30px; opacity:0; animation:heroRiseTilt .8s ease .35s forwards;}
+  .hero-tagline{font-family:var(--font-script-bold); font-weight:400; color:var(--white); text-shadow:0 2px 0 var(--navy), 0 4px 14px rgba(28,37,85,0.35); font-size:clamp(2.4rem, 6.5vw, 3.9rem); line-height:1.15; max-width:640px; margin-bottom:30px; opacity:0; animation:heroRiseTilt .8s ease .35s forwards;}
   .hero-actions{display:flex; flex-wrap:wrap; gap:16px; justify-content:center; padding-bottom:56px; opacity:0; animation:heroRise .8s ease .55s forwards;}
   @keyframes heroPop{ from{opacity:0; transform:translateY(-14px) scale(.96);} to{opacity:1; transform:translateY(0) scale(1);} }
   @keyframes heroRise{ from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);} }
@@ -188,7 +189,7 @@
   .neon-main{font-family:var(--font-neon); font-size:clamp(3rem, 9vw, 5.5rem); color:var(--pink); line-height:1;
     text-shadow:0 0 6px rgba(248,113,168,0.9), 0 0 18px rgba(255,46,154,0.75), 0 0 40px rgba(255,46,154,0.55), 0 0 70px rgba(255,46,154,0.3);
     animation:neonFlicker 4.5s ease-in-out infinite;}
-  .neon-sub{font-family:var(--font-script); font-weight:400; color:var(--white); font-size:clamp(1.6rem, 4vw, 2.4rem); margin-top:18px; letter-spacing:0.02em; transform:rotate(-2deg); display:inline-block;}
+  .neon-sub{font-family:var(--font-marker); font-weight:400; color:var(--white); font-size:clamp(1.3rem, 3vw, 1.9rem); margin-top:18px; letter-spacing:0.02em; transform:rotate(-2deg); display:inline-block;}
   @keyframes neonFlicker{
     0%, 92%, 100%{opacity:1;}
     94%{opacity:0.85;}
