@@ -1,12 +1,12 @@
 {
-  "entree_nom": "Voir l'ardoise du jour",
-  "entree_description": "",
-  "plat_nom": "Voir l'ardoise du jour",
-  "plat_description": "",
-  "dessert_nom": "Voir l'ardoise du jour",
-  "dessert_description": "",
-  "prix_plat_seul": 18,
-  "prix_formule_2": 20.5,
-  "prix_formule_3": 23,
-  "note": "Valable les midis du lundi au vendredi (quantité limitée), hors jours fériés."
+  "dessert_description": "choco",
+  "entree_description": "mayonnaise",
+  "prix_plat_seul": 20,
+  "plat_description": "creme",
+  "prix_formule_2": 22,
+  "prix_formule_3": 24,
+  "note": "Valable les midis du lundi au vendredi (quantité limitée), hors jours fériés.",
+  "dessert_nom": "glace",
+  "entree_nom": "Ré ",
+  "plat_nom": "moule"
 }
