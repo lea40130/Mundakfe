@@ -92,9 +92,9 @@
   .section-head.in > *{opacity:1; transform:none;}
 
   #lieu .section-head h2{font-family:var(--font-lieu); font-weight:400; font-size:clamp(2.3rem, 5vw, 3.1rem); letter-spacing:0.01em;}
-  #carte .section-head h2{font-family:var(--font-chalk); font-weight:700; font-size:clamp(3rem, 6.5vw, 4.2rem); position:relative; padding-bottom:16px;}
+  #carte .section-head h2{font-family:var(--font-chalk); font-weight:700; font-size:clamp(3rem, 6.5vw, 4.2rem); position:relative; padding-top:20px; padding-bottom:16px;}
   #carte .section-head h2::after{content:""; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:36px; height:1px; background:var(--navy);}
-  #carte .section-head .eyebrow, #carte .section-head .eyebrow::before{color:var(--navy); background:var(--navy);}
+  #carte .section-head h2::before{content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:36px; height:1px; background:var(--navy);}
   #carte .section-head p{color:#3a3560;}
   #carte-complete .section-head h2{font-family:var(--font-editorial); font-weight:400; font-size:clamp(1.8rem, 3.6vw, 2.3rem);}
   .avis .section-head h2{font-family:var(--font-avis); font-weight:700; font-size:clamp(2rem, 4vw, 2.6rem);}
@@ -103,7 +103,12 @@
   .carousel-wrap{max-width:440px; margin:0 auto;}
   .carousel{position:relative; border-radius:24px; overflow:hidden; box-shadow:var(--shadow); aspect-ratio:3/4; background:var(--navy);}
   .carousel-track{display:flex; height:100%; transition:transform .5s ease;}
-  .carousel-slide{min-width:100%; height:100%; margin:0;}
+  .carousel-slide{min-width:100%; height:100%; margin:0; flex-shrink:0;}
+  @media (min-width:900px){
+    .carousel-wrap{max-width:1080px;}
+    .carousel{aspect-ratio:auto; height:460px;}
+    .carousel-slide{padding:0 6px;}
+  }
   .carousel-slide img{width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s ease;}
   .carousel-arrow{position:absolute; top:50%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; background:rgba(255,255,255,0.92); border:none; display:flex; align-items:center; justify-content:center; font-size:1.5rem; line-height:1; color:var(--navy); cursor:pointer; box-shadow:0 4px 14px rgba(0,0,0,0.25); transition:background .2s ease, transform .2s ease; z-index:3;}
   .carousel-arrow:hover{background:var(--white); transform:translateY(-50%) scale(1.08);}
@@ -131,7 +136,13 @@
     border:3px solid rgba(0,0,0,0.22);
     overflow:visible;
   }
-  .jour-board{background:#131313; border-radius:6px; padding:44px 30px 34px; text-align:center; position:relative; box-shadow:inset 0 0 24px rgba(0,0,0,0.6);}
+  .jour-header-strip{
+    background:repeating-linear-gradient(90deg, var(--pink) 0 16px, var(--white) 16px 32px);
+    border-radius:6px 6px 0 0;
+    margin:-44px -30px 20px; padding:18px; display:flex; justify-content:center;
+  }
+  .jour-header-strip img{height:120px; width:auto;}
+  .jour-board{background:#131313; border-radius:6px; padding:44px 30px 34px; text-align:center; position:relative; box-shadow:inset 0 0 24px rgba(0,0,0,0.6); overflow:hidden;}
   .jour-slot{margin-bottom:18px;}
   .jour-label{display:block; font-family:var(--font-display); font-weight:700; font-size:1.3rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--pink);}
   .jour-dish{display:block; font-family:var(--font-chalk); font-weight:700; font-size:2.15rem; line-height:1.15; color:var(--white); margin-top:2px;}
@@ -145,7 +156,9 @@
   .jour-loading{color:rgba(255,255,255,0.5); font-size:0.9rem; padding:20px 0; font-family:var(--font-body);}
   .jour-deco-smiley{position:absolute; top:-30px; right:-16px; width:110px; z-index:3; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.25));}
   .jour-deco-flamingo{position:absolute; bottom:-24px; left:-20px; width:126px; z-index:3; transform:rotate(-6deg); filter:drop-shadow(0 8px 12px rgba(0,0,0,0.3));}
-  .jour-watermark{position:absolute; top:50%; left:100%; width:340px; max-width:none; transform:translate(-18%, -50%) rotate(-11deg); opacity:0.16; z-index:0; pointer-events:none;}
+  .jour-watermark{position:absolute; top:50%; right:calc(50% + 310px); width:420px; max-width:none; transform:translateY(-50%) rotate(-11deg); opacity:0.2; z-index:0; pointer-events:none; display:none;}
+  @media (min-width:1100px){ .jour-watermark{display:block;} }
+  .menu-jour .container{position:relative;}
 
   /* ---------- CARTE ---------- */
   .carte-toggle{display:flex; justify-content:center; gap:14px; margin-bottom:28px; flex-wrap:wrap;}
@@ -242,13 +255,14 @@
     .carousel-arrow{width:36px; height:36px; font-size:1.3rem;}
     .jour-frame{padding:16px;}
     .jour-board{padding:44px 20px 28px;}
+    .jour-header-strip{margin:-44px -20px 20px; padding:14px;}
+    .jour-header-strip img{height:80px;}
     .jour-label{font-size:1.05rem;}
     .jour-dish{font-size:1.7rem;}
     .jour-dish-desc{font-size:1.05rem;}
     .jour-price{font-size:2.5rem;}
     .jour-deco-smiley{width:84px; top:-26px; right:-12px;}
     .jour-deco-flamingo{width:100px; bottom:-24px; left:-16px;}
-    .jour-watermark{display:none;}
   }
 </style>
 </head>
@@ -319,16 +333,19 @@
 <section class="menu-jour" id="carte">
   <div class="container">
     <div class="section-head reveal">
-      <p class="eyebrow" style="justify-content:center;">Formules du Munda Kfé</p>
       <h2>Le menu du jour</h2>
       <p>Préparée chaque matin.<br>Valable les midis du lundi au vendredi, hors jours fériés.</p>
     </div>
 
+    <img class="jour-watermark" src="images/logo-mark-watermark.png" alt="">
+
     <div class="jour-frame reveal">
       <img class="jour-deco-smiley" src="images/smiley-real.png" alt="">
       <img class="jour-deco-flamingo" src="images/flamingo-icon.png" alt="">
-      <img class="jour-watermark" src="images/logo-mark-watermark.png" alt="">
 
+      <div class="jour-header-strip">
+        <img src="images/logo-mark-header.png" alt="Munda Kfé">
+      </div>
       <div class="jour-board" id="jourBody">
         <p class="jour-loading">Chargement du menu du jour…</p>
       </div>
@@ -367,8 +384,8 @@
     <div class="avis-grid">
       <div class="avis-card reveal">
         <div class="stars">★★★★★</div>
-        <p class="quote">« Nourriture excellente, et staff adorable ! »</p>
-        <div class="avis-author">Sabrina S.<span>Avis Google, sept. 2024</span></div>
+        <p class="quote">« Accueil chaleureux avec vue imprenable sur l'océan. »</p>
+        <div class="avis-author">Pierre<span>Avis en ligne, juin 2026</span></div>
       </div>
       <div class="avis-card reveal">
         <div class="stars">★★★★★</div>
@@ -481,30 +498,50 @@
     const prevBtn = document.getElementById('carouselPrev');
     const nextBtn = document.getElementById('carouselNext');
     if (!track) return;
-    const total = track.children.length;
+    const slides = [...track.children];
+    const total = slides.length;
+    const mq = window.matchMedia('(min-width: 900px)');
+    let spv = mq.matches ? 3 : 1;
+    let maxIndex = Math.max(0, total - spv);
     let index = 0;
     let timer = null;
 
-    captions.forEach((_, i) => {
-      const b = document.createElement('button');
-      if (i === 0) b.classList.add('active');
-      b.setAttribute('aria-label', 'Aller à la photo ' + (i + 1));
-      b.addEventListener('click', () => { goTo(i); resetTimer(); });
-      dotsWrap.appendChild(b);
-    });
-
+    function buildDots(){
+      dotsWrap.innerHTML = '';
+      for (let i = 0; i <= maxIndex; i++){
+        const b = document.createElement('button');
+        if (i === index) b.classList.add('active');
+        b.setAttribute('aria-label', 'Aller à la photo ' + (i + 1));
+        b.addEventListener('click', () => { goTo(i); resetTimer(); });
+        dotsWrap.appendChild(b);
+      }
+    }
+    function applyWidths(){
+      slides.forEach(s => { s.style.minWidth = (100 / spv) + '%'; });
+    }
     function render(){
-      track.style.transform = `translateX(-${index * 100}%)`;
+      track.style.transform = `translateX(-${index * (100 / spv)}%)`;
       captionEl.textContent = captions[index] || '';
       [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === index));
     }
-    function goTo(i){ index = (i + total) % total; render(); }
+    function goTo(i){ index = (i + maxIndex + 1) % (maxIndex + 1); render(); }
     function next(){ goTo(index + 1); }
     function prev(){ goTo(index - 1); }
     function resetTimer(){ clearInterval(timer); timer = setInterval(next, 4500); }
 
+    function recompute(){
+      spv = mq.matches ? 3 : 1;
+      maxIndex = Math.max(0, total - spv);
+      index = Math.min(index, maxIndex);
+      applyWidths();
+      buildDots();
+      render();
+    }
+
     nextBtn.addEventListener('click', () => { next(); resetTimer(); });
     prevBtn.addEventListener('click', () => { prev(); resetTimer(); });
+    mq.addEventListener('change', recompute);
+    window.addEventListener('resize', () => { recompute(); });
 
     // Glisser au doigt sur mobile
     let touchStartX = 0;
@@ -514,6 +551,8 @@
       if (Math.abs(delta) > 40) { delta < 0 ? next() : prev(); resetTimer(); }
     }, { passive: true });
 
+    applyWidths();
+    buildDots();
     render();
     resetTimer();
   })();
