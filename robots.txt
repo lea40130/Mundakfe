@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /patrons/
 
-Sitemap: https://mundakfe.fr/sitemap.xml
+Sitemap: https://www.munda-kfe.fr/sitemap.xml
