@@ -134,7 +134,7 @@
   #carte .section-head h2{font-family:var(--font-chalk); font-weight:700; font-size:clamp(3rem, 6.5vw, 4.2rem); position:relative; padding-top:20px; padding-bottom:16px;}
   #carte .section-head h2::after{content:""; position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:36px; height:1px; background:var(--navy);}
   #carte .section-head h2::before{content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:36px; height:1px; background:var(--navy);}
-  #carte .section-head p{color:#3a3560;}
+  #carte .section-head p{color:var(--navy); font-weight:700; font-size:clamp(1.1rem, 2.2vw, 1.4rem); line-height:1.5;}
   #carte-complete .section-head h2{font-family:var(--font-editorial); font-weight:400; font-size:clamp(1.8rem, 3.6vw, 2.3rem);}
   .avis .section-head h2{font-family:var(--font-avis); font-weight:700; font-size:clamp(2rem, 4vw, 2.6rem);}
 
@@ -190,7 +190,7 @@
   .jour-price{display:block; font-family:var(--font-display); font-weight:700; font-size:3.1rem; color:var(--yellow); line-height:1;}
   .jour-price-label{display:block; font-size:0.85rem; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.1em; margin-top:4px;}
   .jour-secondary{font-size:0.95rem; color:rgba(255,255,255,0.6); margin-top:14px;}
-  .jour-note{font-size:0.78rem; color:rgba(255,255,255,0.4); font-style:italic; margin-top:10px;}
+  .jour-note{font-size:1rem; color:var(--white); font-style:italic; margin-top:10px;}
   .jour-loading{color:rgba(255,255,255,0.5); font-size:0.9rem; padding:20px 0; font-family:var(--font-body);}
   .jour-deco-smiley{position:absolute; top:-30px; right:-16px; width:110px; z-index:3; filter:drop-shadow(0 4px 8px rgba(0,0,0,0.25));}
   .jour-watermark{position:absolute; top:50%; right:calc(50% + 310px); width:420px; max-width:none; transform:translateY(-50%) rotate(-11deg); opacity:0.2; z-index:0; pointer-events:none; display:none;}
@@ -372,7 +372,7 @@
   <div class="container">
     <div class="section-head reveal">
       <h2>Le menu du jour</h2>
-      <p>Préparée chaque matin.<br>Valable les midis du lundi au vendredi, hors jours fériés.</p>
+      <p>Préparé chaque matin.<br>Valable les midis du lundi au vendredi, hors jours fériés.</p>
     </div>
 
     <img class="jour-watermark" src="images/logo-mark-watermark.png" alt="">
@@ -471,6 +471,7 @@
               <span class="chip">Chiens acceptés</span>
               <span class="chip">Cartes bancaires</span>
               <span class="chip">Chèques-Vacances (2 max/pers.)</span>
+              <span class="chip">Tickets Restaurant (2 max/pers.)</span>
             </div>
           </div>
         </div>
@@ -705,11 +706,11 @@
         {name:"Supplément chantilly", price:"2,00 €"},
         {type:"note", label:"Parfums : vanille, fraise, chocolat, café, noix de coco — Sorbets : citron vert, cerise"},
         {type:"subheading", label:"Coupes de glace"},
-        {name:"Dame blanche", desc:"glace vanille, sauce chocolat, chantilly", price:"9,00 €"},
-        {name:"Chocolat liégeois", price:"9,00 €"},
-        {name:"Café liégeois", price:"9,00 €"},
-        {name:"Noix de coco liégeois", price:"9,00 €"},
-        {name:"Cerise Melba", desc:"sorbet cerise, glace vanille, cerises amarena, chantilly", price:"10,00 €"},
+        {name:"Dame blanche", desc:"3 boules vanille, sauce chocolat, chantilly", price:"9,00 €"},
+        {name:"Chocolat liégeois", desc:"3 boules chocolat, sauce chocolat, chantilly", price:"9,00 €"},
+        {name:"Café liégeois", desc:"3 boules café, sauce café, chantilly", price:"9,00 €"},
+        {name:"Noix de coco liégeois", desc:"3 boules noix de coco, sauce chocolat, chantilly", price:"9,00 €"},
+        {name:"Cerise Melba", desc:"1 boule vanille, 2 boules cerise, cerises amarena, chantilly", price:"10,00 €"},
         {name:"Colonel", desc:"sorbet citron vert, vodka", price:"11,00 €"},
       ],
       "Formules du midi": [
