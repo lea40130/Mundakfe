@@ -1,12 +1,12 @@
 {
-  "entree_nom": "Voir l'ardoise du jour",
-  "entree_description": "",
-  "plat_nom": "Voir l'ardoise du jour",
-  "plat_description": "",
-  "dessert_nom": "Voir l'ardoise du jour",
   "dessert_description": "",
+  "entree_description": "",
   "prix_plat_seul": 18,
+  "plat_description": "",
   "prix_formule_2": 20.5,
   "prix_formule_3": 23,
-  "note": "Valable les midis du lundi au vendredi (quantité limitée), hors jours fériés."
+  "note": "Valable les midis du lundi au vendredi (quantité limitée), hors jours fériés.",
+  "dessert_nom": "Brownies aux noix de pécan, caramel beurre salé ",
+  "entree_nom": "Salade de croquetas de chèvre avec lard fumé ",
+  "plat_nom": "Moules à la crème de paprika fumé "
 }
