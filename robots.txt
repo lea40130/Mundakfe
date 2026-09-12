@@ -1,5 +1,4 @@
 User-agent: *
-Allow: /
 Disallow: /patrons/
 
 Sitemap: https://munda-kfe.fr/sitemap.xml
